@@ -27,17 +27,6 @@ body {
     line-height: 1.6;
 }
 
-/* --- TEXTURA DE PAPEL WASHI + GRANO CYBER SUTIL --- */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.045;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='washiNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23washiNoise)'/%3E%3C/svg%3E");
-}
-
 /* --- ENCABEZADO CYBER-PAGANO --- */
 .navbar {
     background-color: rgba(15, 1, 2, 0.92);
@@ -148,9 +137,10 @@ body::before {
     width: 100%;
     height: auto;
     display: block;
-    filter: contrast(1.18) brightness(0.78) saturate(1.15) sepia(0.15) hue-rotate(-8deg);
-    -webkit-mask-image: radial-gradient(ellipse 62% 85% at 58% 50%, black 42%, transparent 96%);
-    mask-image: radial-gradient(ellipse 62% 85% at 58% 50%, black 42%, transparent 96%);
+    /* Nitidez alta sin efecto lavado, manteniendo el tono rojizo integrado */
+    filter: contrast(1.12) brightness(0.92) saturate(1.08);
+    -webkit-mask-image: radial-gradient(ellipse 62% 85% at 58% 50%, black 45%, transparent 96%);
+    mask-image: radial-gradient(ellipse 62% 85% at 58% 50%, black 45%, transparent 96%);
 }
 
 /* Linterna calibrada al rostro (43% horizontal, 25% vertical) */
@@ -160,17 +150,15 @@ body::before {
     inset: 0;
     pointer-events: none;
     background: 
-        /* 1. Haz de luz principal que sigue el cursor */
         radial-gradient(
-            circle 240px at var(--x, 43%) var(--y, 25%), 
+            circle 250px at var(--x, 43%) var(--y, 25%), 
             rgba(15, 1, 2, 0.0) 0%, 
-            rgba(15, 1, 2, 0.62) 55%, 
+            rgba(15, 1, 2, 0.60) 55%, 
             rgba(10, 0, 1, 0.88) 100%
         ),
-        /* 2. Halo fijo suave que mantiene el rostro visible desde el inicio */
         radial-gradient(
-            circle 140px at 43% 25%,
-            rgba(255, 235, 230, 0.14) 0%,
+            circle 145px at 43% 25%,
+            rgba(255, 240, 235, 0.14) 0%,
             transparent 75%
         );
     z-index: 2;
@@ -179,7 +167,7 @@ body::before {
 .hero-content {
     position: absolute;
     left: 7%;
-    top: 14%;
+    top: 12%;
     z-index: 3;
     max-width: 480px;
     pointer-events: none;
@@ -455,7 +443,7 @@ body::before {
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
     .hero { flex-direction: column; box-shadow: none; }
     .hero-media { width: 100%; }
-    .cave-flashlight { display: none; } /* En celular se muestra iluminada para facilitar el scroll */
+    .cave-flashlight { display: none; }
     .hero-content { 
         position: relative; 
         left: auto; 
