@@ -1,11 +1,13 @@
 :root {
-    --bg-crimson: #240306;       /* Burdeos oscuro y abismal */
-    --bg-darker: #0f0102;        /* Negro cueva con matiz sangre */
-    --gold: #d4af6a;             /* Dorado ritual */
-    --gold-glow: rgba(212, 175, 106, 0.35);
-    --cyber-red: #ff2a4b;        /* Acento sutil cyber-neón */
-    --ivory: #f5efe6;
-    --text-muted: #bba3a3;
+    --bg-crimson: #1f0205;       /* Rojo sangre muy profundo */
+    --bg-darker: #0a0001;        /* Negro obsidiana */
+    --blood-glow: rgba(185, 15, 35, 0.35); /* Aura roja mística */
+    --gold: #d8b467;             /* Dorado ritual */
+    --gold-bright: #ffe6a3;      /* Destello dorado intenso */
+    --gold-glow: rgba(216, 180, 103, 0.45);
+    --cyber-red: #ff2442;        /* Rojo carmesí vibrante */
+    --ivory: #f7f1e8;
+    --text-muted: #c4abab;
     --font-title: 'Yuji Syuku', serif;
     --font-body: 'Space Grotesk', sans-serif;
 }
@@ -29,9 +31,10 @@ body {
 
 /* --- ENCABEZADO CYBER-PAGANO --- */
 .navbar {
-    background-color: rgba(15, 1, 2, 0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(212, 175, 106, 0.4);
+    background-color: rgba(10, 0, 1, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(216, 180, 103, 0.45);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.85), 0 1px 12px var(--blood-glow);
     padding: 1rem 3rem;
     position: sticky;
     top: 0;
@@ -46,54 +49,79 @@ body {
     align-items: center;
 }
 
+/* Sello del nombre en el encabezado */
 .brand-box {
     border: 1px solid var(--gold);
-    padding: 0.5rem 1.2rem;
+    padding: 0.5rem 1.3rem;
     text-decoration: none;
     color: var(--gold);
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 12px rgba(212, 175, 106, 0.15);
+    background: radial-gradient(circle at center, rgba(185, 15, 35, 0.15) 0%, transparent 80%);
+    box-shadow: 0 0 15px rgba(216, 180, 103, 0.15), inset 0 0 10px rgba(185, 15, 35, 0.2);
+    transition: all 0.4s ease;
 }
 
 .brand-box:hover {
-    background-color: rgba(212, 175, 106, 0.1);
-    box-shadow: 0 0 20px var(--gold-glow);
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 22px var(--gold-glow), inset 0 0 15px var(--blood-glow);
+    transform: translateY(-1px);
 }
 
 .brand-name {
     font-family: var(--font-title);
     font-size: 1.2rem;
     letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(216, 180, 103, 0.35);
 }
 
 .brand-symbol {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin-top: 2px;
     color: var(--cyber-red);
+    text-shadow: 0 0 8px var(--cyber-red);
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.2rem;
 }
 
 .nav-links a {
+    position: relative;
     color: var(--gold);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.8px;
+    padding-bottom: 4px;
     transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Línea mística roja y dorada que nace bajo cada enlace */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyber-red), var(--gold-bright), var(--cyber-red), transparent);
+    transform: translateX(-50%);
+    transition: width 0.35s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--ivory);
-    text-shadow: 0 0 8px var(--gold);
+    color: var(--gold-bright);
+    text-shadow: 0 0 12px var(--gold-glow), 0 0 20px var(--blood-glow);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
 }
 
 .nav-socials {
@@ -105,25 +133,32 @@ body {
     color: var(--gold);
     text-decoration: none;
     font-size: 1rem;
-    transition: color 0.3s;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 .nav-socials a:hover {
     color: var(--cyber-red);
+    text-shadow: 0 0 10px var(--cyber-red);
 }
 
-/* --- HERO: ESTAMPA UKIYO-E CYBER-PAGANA + LINTERNA --- */
+/* --- HERO: ESTAMPA UKIYO-E MÍSTICA --- */
 .hero {
     position: relative;
     width: 100%;
-    background-color: var(--bg-darker);
-    border-bottom: 1px solid rgba(212, 175, 106, 0.4);
+    /* Neblina sutil rojo sangre emergiendo desde el negro obsidiana */
+    background: radial-gradient(circle at 22% 45%, rgba(110, 8, 20, 0.28) 0%, var(--bg-darker) 65%);
+    border-bottom: 1px solid rgba(216, 180, 103, 0.45);
     overflow: hidden;
     cursor: crosshair;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    box-shadow: inset 0 0 0 12px var(--bg-darker), inset 0 0 0 13px rgba(212, 175, 106, 0.25);
+    /* Marco doble ritualizado con aura carmesí interior */
+    box-shadow: 
+        inset 0 0 60px rgba(0, 0, 0, 0.9),
+        inset 0 0 0 12px var(--bg-darker), 
+        inset 0 0 0 13px rgba(216, 180, 103, 0.35),
+        inset 0 0 25px rgba(185, 15, 35, 0.25);
 }
 
 .hero-media {
@@ -137,13 +172,12 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    /* Nitidez alta sin efecto lavado, manteniendo el tono rojizo integrado */
     filter: contrast(1.12) brightness(0.92) saturate(1.08);
     -webkit-mask-image: radial-gradient(ellipse 62% 85% at 58% 50%, black 45%, transparent 96%);
     mask-image: radial-gradient(ellipse 62% 85% at 58% 50%, black 45%, transparent 96%);
 }
 
-/* Linterna calibrada al rostro (43% horizontal, 25% vertical) */
+/* Linterna calibrada al rostro */
 .cave-flashlight {
     display: block;
     position: absolute;
@@ -152,13 +186,13 @@ body {
     background: 
         radial-gradient(
             circle 250px at var(--x, 43%) var(--y, 25%), 
-            rgba(15, 1, 2, 0.0) 0%, 
-            rgba(15, 1, 2, 0.60) 55%, 
-            rgba(10, 0, 1, 0.88) 100%
+            rgba(10, 0, 1, 0.0) 0%, 
+            rgba(10, 0, 1, 0.58) 55%, 
+            rgba(6, 0, 1, 0.88) 100%
         ),
         radial-gradient(
             circle 145px at 43% 25%,
-            rgba(255, 240, 235, 0.14) 0%,
+            rgba(255, 235, 225, 0.15) 0%,
             transparent 75%
         );
     z-index: 2;
@@ -175,24 +209,29 @@ body {
 
 .cyber-tag {
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     letter-spacing: 3.5px;
     color: var(--cyber-red);
-    background: rgba(15, 1, 2, 0.85);
-    border: 1px solid rgba(255, 42, 75, 0.4);
-    padding: 0.3rem 0.8rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 10px rgba(255, 42, 75, 0.5);
+    background: rgba(10, 0, 1, 0.88);
+    border: 1px solid rgba(255, 36, 66, 0.45);
+    box-shadow: 0 0 15px rgba(255, 36, 66, 0.2), inset 0 0 8px rgba(255, 36, 66, 0.15);
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.1rem;
+    text-shadow: 0 0 10px rgba(255, 36, 66, 0.75);
 }
 
+/* Título principal con halo dorado y profundidad carmesí */
 .hero h1 {
     font-family: var(--font-title);
     font-size: clamp(3.6rem, 5.5vw, 5.6rem);
     font-weight: 400;
     line-height: 0.96;
     color: var(--ivory);
-    margin-bottom: 0.8rem;
-    text-shadow: 0 6px 25px rgba(0, 0, 0, 0.95), 0 0 15px rgba(212, 175, 106, 0.2);
+    margin-bottom: 0.9rem;
+    text-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.95),
+        0 0 22px rgba(216, 180, 103, 0.32),
+        0 0 45px rgba(185, 15, 35, 0.35);
 }
 
 .hero-subtitle {
@@ -205,7 +244,8 @@ body {
 .hero-subtitle em {
     font-family: var(--font-title);
     font-style: normal;
-    color: var(--gold);
+    color: var(--gold-bright);
+    text-shadow: 0 0 12px var(--gold-glow);
 }
 
 .hero-manifesto {
@@ -214,28 +254,29 @@ body {
     color: var(--text-muted);
     line-height: 1.7;
     border-left: 2px solid var(--gold);
-    background: linear-gradient(90deg, rgba(36, 3, 6, 0.6) 0%, transparent 100%);
-    padding: 0.6rem 1rem;
+    background: linear-gradient(90deg, rgba(130, 10, 24, 0.25) 0%, transparent 100%);
+    padding: 0.65rem 1.1rem;
+    box-shadow: -4px 0 15px -4px var(--gold-glow);
 }
 
 .hero-actions {
-    margin-top: 2rem;
+    margin-top: 2.1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.1rem;
     pointer-events: auto;
 }
 
 .cave-hint {
     font-size: 0.8rem;
-    letter-spacing: 2px;
+    letter-spacing: 2.2px;
     text-transform: uppercase;
     color: var(--gold);
-    animation: pulseGlow 3s infinite ease-in-out;
+    animation: mysticPulse 3.5s infinite ease-in-out;
 }
 
-/* Cartela vertical estilo firma/sello Ukiyo-e (狐 + こいしろ) */
+/* --- SELLO VERTICAL MÍSTICO (狐 + こいしろ) --- */
 .kanji-seal {
     position: absolute;
     right: 2.5rem;
@@ -244,59 +285,150 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.55rem;
     font-family: var(--font-title);
-    color: var(--gold);
-    font-size: 1.15rem;
-    background-color: rgba(15, 1, 2, 0.85);
+    color: var(--gold-bright);
+    font-size: 1.2rem;
+    background: linear-gradient(180deg, rgba(25, 2, 5, 0.92) 0%, rgba(10, 0, 1, 0.95) 100%);
     border: 1px solid var(--gold);
-    padding: 0.9rem 0.55rem;
-    box-shadow: 0 0 0 3px var(--bg-darker), 0 0 0 4px rgba(212, 175, 106, 0.35);
+    padding: 1rem 0.6rem;
+    box-shadow: 
+        0 0 0 3px var(--bg-darker), 
+        0 0 0 4px rgba(216, 180, 103, 0.45),
+        0 0 25px rgba(185, 15, 35, 0.4),
+        inset 0 0 14px rgba(216, 180, 103, 0.2);
     pointer-events: none;
+    animation: sealAura 4.5s infinite ease-in-out;
+}
+
+.kanji-seal span:first-child {
+    font-size: 1.35rem;
+    color: var(--cyber-red);
+    text-shadow: 0 0 12px var(--cyber-red), 0 0 22px rgba(255, 36, 66, 0.6);
 }
 
 .kanji-line {
     width: 1px;
-    height: 32px;
-    background: linear-gradient(to bottom, var(--gold), var(--cyber-red));
+    height: 34px;
+    background: linear-gradient(to bottom, var(--cyber-red), var(--gold-bright));
+    box-shadow: 0 0 8px var(--gold-glow);
 }
 
 .vertical-hiragana {
     writing-mode: vertical-rl;
     text-orientation: upright;
-    letter-spacing: 4px;
-    font-size: 1.05rem;
+    letter-spacing: 5px;
+    font-size: 1.08rem;
+    color: var(--gold-bright);
+    text-shadow: 0 0 10px var(--gold-glow), 0 0 18px rgba(216, 180, 103, 0.35);
 }
 
-@keyframes pulseGlow {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.95; text-shadow: 0 0 8px var(--gold); }
+@keyframes mysticPulse {
+    0%, 100% { opacity: 0.45; text-shadow: none; }
+    50% { opacity: 1; text-shadow: 0 0 10px var(--gold), 0 0 18px var(--cyber-red); }
+}
+
+@keyframes sealAura {
+    0%, 100% { 
+        box-shadow: 0 0 0 3px var(--bg-darker), 0 0 0 4px rgba(216, 180, 103, 0.4), 0 0 20px rgba(185, 15, 35, 0.35), inset 0 0 12px rgba(216, 180, 103, 0.15);
+    }
+    50% { 
+        box-shadow: 0 0 0 3px var(--bg-darker), 0 0 0 4px rgba(255, 230, 163, 0.75), 0 0 30px rgba(216, 180, 103, 0.35), inset 0 0 18px rgba(255, 36, 66, 0.25);
+    }
+}
+
+/* --- BOTÓN TALISMÁN RITUAL --- */
+.btn-gold {
+    position: relative;
+    display: inline-block;
+    padding: 0.9rem 2.3rem;
+    border: 1px solid var(--gold);
+    background: linear-gradient(135deg, rgba(15, 1, 2, 0.92) 0%, rgba(55, 5, 10, 0.85) 100%);
+    color: var(--gold-bright);
+    text-decoration: none;
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    overflow: hidden;
+    box-shadow: 
+        0 0 15px rgba(0, 0, 0, 0.8),
+        inset 0 0 12px rgba(216, 180, 103, 0.15);
+    transition: all 0.4s ease;
+}
+
+/* Doble marco interior sutil en el botón */
+.btn-gold::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(255, 36, 66, 0.35);
+    pointer-events: none;
+    transition: border-color 0.4s ease;
+}
+
+/* Destello de luz que cruza el botón al pasar el cursor */
+.btn-gold::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 230, 163, 0.3), transparent);
+    transform: skewX(-25deg);
+    transition: left 0.6s ease;
+}
+
+.btn-gold:hover {
+    border-color: var(--gold-bright);
+    color: var(--ivory);
+    text-shadow: 0 0 10px var(--gold-bright);
+    box-shadow: 
+        0 0 25px var(--gold-glow),
+        0 0 40px var(--blood-glow),
+        inset 0 0 18px rgba(255, 36, 66, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-gold:hover::before {
+    border-color: rgba(216, 180, 103, 0.6);
+}
+
+.btn-gold:hover::after {
+    left: 150%;
 }
 
 /* --- SECCIONES Y GALERÍA --- */
 .main-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 5rem 2rem;
+    padding: 5.5rem 2rem;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 4.5rem;
 }
 
 .ornament {
     color: var(--cyber-red);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     display: block;
     margin-bottom: 0.5rem;
+    text-shadow: 0 0 12px var(--cyber-red);
 }
 
 .section-header h2 {
     font-family: var(--font-title);
-    font-size: 2.8rem;
+    font-size: 2.9rem;
     font-weight: 400;
     color: var(--ivory);
+    text-shadow: 0 0 20px rgba(216, 180, 103, 0.25);
+}
+
+.section-header h2 em {
+    color: var(--gold);
+    font-style: normal;
 }
 
 .section-header p {
@@ -311,37 +443,56 @@ body {
     gap: 2.5rem;
 }
 
+/* Tarjetas enmarcadas como relicarios */
 .work-item {
-    border: 1px solid rgba(212, 175, 106, 0.3);
-    background-color: var(--bg-darker);
+    border: 1px solid rgba(216, 180, 103, 0.35);
+    background: linear-gradient(180deg, var(--bg-darker) 0%, #160103 100%);
     position: relative;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.work-item::after {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(255, 36, 66, 0.15);
+    pointer-events: none;
+    transition: border-color 0.4s ease;
 }
 
 .work-item:hover {
-    border-color: var(--gold);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(212, 175, 106, 0.15);
+    border-color: var(--gold-bright);
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.85), 
+        0 0 22px var(--gold-glow),
+        inset 0 0 20px rgba(185, 15, 35, 0.25);
+}
+
+.work-item:hover::after {
+    border-color: rgba(216, 180, 103, 0.4);
 }
 
 .work-image {
     width: 100%;
     height: 360px;
     overflow: hidden;
-    background-color: #080001;
+    background-color: #060001;
+    border-bottom: 1px solid rgba(216, 180, 103, 0.25);
 }
 
 .work-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: contrast(1.08) saturate(0.9);
-    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: contrast(1.08) saturate(0.95);
+    transition: transform 0.6s ease, filter 0.6s ease;
 }
 
 .work-item:hover .work-image img {
-    transform: scale(1.04);
-    filter: contrast(1.12) saturate(1.05);
+    transform: scale(1.05);
+    filter: contrast(1.14) saturate(1.08);
 }
 
 .work-info {
@@ -350,16 +501,17 @@ body {
 
 .work-year {
     display: block;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
+    font-size: 0.82rem;
+    letter-spacing: 2.2px;
     text-transform: uppercase;
     color: var(--cyber-red);
-    margin-bottom: 0.4rem;
+    text-shadow: 0 0 8px rgba(255, 36, 66, 0.4);
+    margin-bottom: 0.45rem;
 }
 
 .work-info h3 {
     font-family: var(--font-title);
-    font-size: 1.5rem;
+    font-size: 1.55rem;
     font-weight: 400;
     margin-bottom: 0.75rem;
     color: var(--ivory);
@@ -373,11 +525,11 @@ body {
 /* --- SEMBLANZA --- */
 .bio-section {
     margin-top: 6rem;
-    padding: 4rem 2rem;
-    border-top: 1px solid rgba(212, 175, 106, 0.3);
-    border-bottom: 1px solid rgba(212, 175, 106, 0.3);
+    padding: 4.5rem 2rem;
+    border-top: 1px solid rgba(216, 180, 103, 0.35);
+    border-bottom: 1px solid rgba(216, 180, 103, 0.35);
     text-align: center;
-    background: radial-gradient(circle at center, rgba(56, 6, 9, 0.4) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(110, 8, 20, 0.35) 0%, transparent 72%);
 }
 
 .bio-container {
@@ -387,33 +539,21 @@ body {
 
 .bio-container h2 {
     font-family: var(--font-title);
-    font-size: 2.6rem;
+    font-size: 2.7rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
+    text-shadow: 0 0 18px rgba(216, 180, 103, 0.25);
+}
+
+.bio-container h2 em {
+    color: var(--gold);
+    font-style: normal;
 }
 
 .bio-container p {
     font-size: 1.15rem;
     color: var(--text-muted);
-    margin-bottom: 2rem;
-}
-
-.btn-gold {
-    display: inline-block;
-    padding: 0.85rem 2.2rem;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
-}
-
-.btn-gold:hover {
-    background-color: var(--gold);
-    color: var(--bg-darker);
-    box-shadow: 0 0 20px var(--gold-glow);
+    margin-bottom: 2.2rem;
 }
 
 /* --- PIE DE PÁGINA --- */
@@ -422,6 +562,8 @@ body {
     text-align: center;
     color: var(--text-muted);
     font-size: 0.95rem;
+    background-color: var(--bg-darker);
+    border-top: 1px solid rgba(216, 180, 103, 0.2);
 }
 
 .footer-links {
@@ -434,6 +576,12 @@ body {
 .footer-links a {
     color: var(--gold);
     text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--gold-bright);
+    text-shadow: 0 0 8px var(--gold-glow);
 }
 
 /* --- RESPONSIVO PARA CELULARES --- */
