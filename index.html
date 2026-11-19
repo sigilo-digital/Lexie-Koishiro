@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lexie Koishiro — Archivo Ritual</title>
+    <title>Lexie Koishiro — Portafolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Yuji+Syuku&display=swap" rel="stylesheet">
@@ -11,96 +11,58 @@
 </head>
 <body>
 
-    <!-- PERGAMINO VERTICAL / ALTAR PRINCIPAL -->
-    <header class="scroll-hero" id="hero-cave">
+    <!-- ENCABEZADO CYBER-PAGANO -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-box">
+                <span class="brand-name">LEXIE KOISHIRO</span>
+                <span class="brand-symbol">⛩ ✦ ⛩</span>
+            </a>
 
-        <!-- Eje superior: Emblema Torii minimalista -->
-        <div class="top-totem">
-            <span class="totem-tag">[ ARCHIVO_00 // KITSUNE_RITUAL ]</span>
-            <div class="totem-emblem">⛩ ✦ ⛩</div>
-        </div>
+            <nav class="nav-links">
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#talleres">Pedagogía & Talleres</a>
+                <a href="#portafolio">Portafolio</a>
+                <a href="#eventos">Eventos</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
 
-        <!-- Columna Ritual Izquierda (Navegación lateral estilo grabado) -->
-        <nav class="side-pillar left-pillar" aria-label="Navegación principal izquierda">
-            <a href="#sobre-mi" class="pillar-link">
-                <span class="node-num">01</span>
-                <span class="node-text">Sobre Mí</span>
-            </a>
-            <div class="pillar-thread"></div>
-            <a href="#talleres" class="pillar-link">
-                <span class="node-num">02</span>
-                <span class="node-text">Pedagogía & Talleres</span>
-            </a>
-            <div class="pillar-thread"></div>
-            <a href="#portafolio" class="pillar-link">
-                <span class="node-num">03</span>
-                <span class="node-text">Archivo Escénico</span>
-            </a>
-        </nav>
-
-        <!-- Columna Ritual Derecha (Navegación + Contacto) -->
-        <nav class="side-pillar right-pillar" aria-label="Navegación principal derecha">
-            <a href="#eventos" class="pillar-link">
-                <span class="node-num">04</span>
-                <span class="node-text">Eventos</span>
-            </a>
-            <div class="pillar-thread"></div>
-            <a href="#contacto" class="pillar-link">
-                <span class="node-num">05</span>
-                <span class="node-text">Contacto</span>
-            </a>
-            <div class="pillar-thread"></div>
-            <div class="pillar-socials">
+            <div class="nav-socials">
                 <a href="https://instagram.com" target="_blank" aria-label="Instagram">IG</a>
-                <span>✦</span>
                 <a href="mailto:tu-correo@ejemplo.com" aria-label="Correo">✉</a>
             </div>
-        </nav>
-
-        <!-- Sigilo Geométrico Kitsune Astral (SVG detrás de la imagen) -->
-        <div class="kitsune-sigil-bg" aria-hidden="true">
-            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                <!-- Círculos arcanos -->
-                <circle cx="200" cy="200" r="185" fill="none" stroke="rgba(216, 180, 103, 0.22)" stroke-width="0.8" stroke-dasharray="6 6"/>
-                <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(255, 36, 66, 0.28)" stroke-width="1"/>
-                <!-- Geometría sagrada máscara Kitsune minimalista -->
-                <polygon points="120,65 155,145 105,165" fill="none" stroke="rgba(216, 180, 103, 0.35)" stroke-width="1.2"/>
-                <polygon points="280,65 245,145 295,165" fill="none" stroke="rgba(216, 180, 103, 0.35)" stroke-width="1.2"/>
-                <polygon points="105,165 200,325 295,165 200,135" fill="none" stroke="rgba(216, 180, 103, 0.4)" stroke-width="1.2"/>
-                <!-- Ojos rasgados rituales -->
-                <polyline points="140,185 170,198 145,202" fill="none" stroke="rgba(255, 36, 66, 0.65)" stroke-width="1.5"/>
-                <polyline points="260,185 230,198 255,202" fill="none" stroke="rgba(255, 36, 66, 0.65)" stroke-width="1.5"/>
-                <!-- Eje vertical central -->
-                <line x1="200" y1="20" x2="200" y2="380" stroke="rgba(216, 180, 103, 0.2)" stroke-width="0.8"/>
-            </svg>
         </div>
+    </header>
 
-        <!-- Eje Central: Fotografía Vertical + Linterna -->
+    <!-- HERO: ESTAMPA UKIYO-E CYBER-PAGANA -->
+    <section class="hero" id="hero-cave">
         <div class="hero-media">
             <img src="img/lex.png" alt="Lexie Koishiro Performance" class="hero-img">
             <div class="cave-flashlight"></div>
         </div>
 
-        <!-- Sello Vertical de Grabado (狐 + こいしろ) -->
+        <!-- Sello vertical: Kitsune (狐) + Koishiro en Hiragana (こいしろ) -->
         <div class="kanji-seal" aria-hidden="true">
             <span>狐</span>
             <span class="kanji-line"></span>
             <span class="vertical-hiragana">こいしろ</span>
         </div>
-
-        <!-- Bloque de Título y Manifiesto en la base del Tótem -->
-        <div class="hero-totem-footer">
-            <h1 class="glitch-title" data-text="Lexie Koishiro">Lexie Koishiro</h1>
+        
+        <div class="hero-content">
+            <span class="cyber-tag">[ ARCHIVO_00 // KITSUNE_RITUAL ]</span>
+            <h1 class="glitch-title" data-text="Lexie Koishiro">Lexie<br>Koishiro</h1>
             <p class="hero-subtitle">Artes Vivas, <em>Cuerpo</em> & Performance Ritual</p>
+            
             <p class="hero-manifesto">
                 Exploración escénica sobre el umbral, lo sagrado y la mutación del cuerpo en vivo.
             </p>
+
             <div class="hero-actions">
                 <a href="#portafolio" class="btn-gold">Entrar al Archivo ↓</a>
                 <span class="cave-hint">✦ Mueve la luz en la oscuridad</span>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- GALERÍA DE PERFORMANCES Y OBRA -->
     <main class="main-content">
@@ -172,7 +134,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT PARA LINTERNA EN LA CUEVA -->
+    <!-- SCRIPT PARA LA LINTERNA EN LA CUEVA -->
     <script>
         const heroMedia = document.querySelector('.hero-media');
         const flashlight = document.querySelector('.cave-flashlight');
