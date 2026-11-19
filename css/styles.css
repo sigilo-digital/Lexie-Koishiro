@@ -1,5 +1,5 @@
 :root {
-    --bg-crimson: #1f0205;       /* Rojo sangre muy profundo */
+    --bg-crimson: #1f0205;       /* Rojo sangre profundo */
     --bg-darker: #0a0001;        /* Negro obsidiana */
     --blood-glow: rgba(185, 15, 35, 0.35);
     --gold: #d8b467;             /* Dorado ritual */
@@ -33,7 +33,7 @@ body {
 .navbar {
     background-color: rgba(10, 0, 1, 0.94);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(216, 180, 103, 0.4);
+    border-bottom: 1px solid rgba(216, 180, 103, 0.35);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.85);
     padding: 1rem 3rem;
     position: sticky;
@@ -139,13 +139,11 @@ body {
     text-shadow: 0 0 10px var(--cyber-red);
 }
 
-/* --- HERO: SIN DOBLE MARCO, SOLO UNA LÍNEA DORADA INFERIOR --- */
+/* --- HERO: FUSIÓN INVISIBLE Y DIVISIÓN DORADA ELEGANTE --- */
 .hero {
     position: relative;
     width: 100%;
     background-color: var(--bg-darker);
-    background-image: radial-gradient(circle at 22% 45%, rgba(110, 8, 20, 0.24) 0%, var(--bg-darker) 62%);
-    border-bottom: 1px solid var(--gold); /* Única línea dorada divisoria */
     overflow: hidden;
     cursor: crosshair;
     display: flex;
@@ -153,25 +151,34 @@ body {
     align-items: center;
 }
 
+/* Filete dorado elegante en la base del Hero con destello central */
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(216, 180, 103, 0.35) 20%,
+        var(--gold-bright) 50%,
+        rgba(216, 180, 103, 0.35) 80%,
+        transparent 100%
+    );
+    box-shadow: 0 0 14px var(--gold-glow);
+    z-index: 5;
+}
+
 .hero-media {
     position: relative;
     width: 72%;
     max-width: 960px;
     line-height: 0;
-}
-
-/* Difuminado total en los 4 bordes para borrar cualquier línea cuadrada */
-.hero-media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 2;
-    background:
-        linear-gradient(to right, var(--bg-darker) 0%, rgba(10, 0, 1, 0.65) 18%, transparent 45%),
-        linear-gradient(to left, var(--bg-darker) 0%, transparent 18%),
-        linear-gradient(to top, var(--bg-darker) 0%, transparent 16%),
-        linear-gradient(to bottom, var(--bg-darker) 0%, transparent 14%);
+    /* Máscara directa sobre todo el contenedor para eliminar el corte izquierdo por completo */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 18%, black 36%, black 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 18%, black 36%, black 88%, transparent 100%);
 }
 
 .hero-img {
@@ -179,11 +186,11 @@ body {
     height: auto;
     display: block;
     filter: contrast(1.12) brightness(0.92) saturate(1.08);
-    -webkit-mask-image: radial-gradient(ellipse 66% 84% at 56% 50%, black 38%, transparent 94%);
-    mask-image: radial-gradient(ellipse 66% 84% at 56% 50%, black 38%, transparent 94%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 86%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 86%, transparent 100%);
 }
 
-/* Linterna calibrada al rostro */
+/* Linterna calibrada exactamente sobre tu rostro (34% horizontal, 25% vertical) */
 .cave-flashlight {
     display: block;
     position: absolute;
@@ -191,17 +198,17 @@ body {
     pointer-events: none;
     background: 
         radial-gradient(
-            circle 250px at var(--x, 45%) var(--y, 26%), 
+            circle 250px at var(--x, 34%) var(--y, 25%), 
             rgba(10, 0, 1, 0.0) 0%, 
             rgba(10, 0, 1, 0.56) 55%, 
             rgba(10, 0, 1, 0.92) 100%
         ),
         radial-gradient(
-            circle 145px at 45% 26%,
-            rgba(255, 235, 225, 0.15) 0%,
+            circle 150px at 34% 25%,
+            rgba(255, 235, 225, 0.16) 0%,
             transparent 75%
         );
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-content {
@@ -392,45 +399,58 @@ body {
     }
 }
 
-/* --- BOTÓN MINIMALISTA CON ESQUINAS DORADAS REFORZADAS --- */
+/* --- BOTÓN RELICARIO CYBER-PAGANO --- */
 .btn-gold {
     position: relative;
-    display: inline-block;
-    padding: 0.9rem 2.4rem;
-    border: 1px solid rgba(216, 180, 103, 0.45);
-    background: rgba(10, 0, 1, 0.85);
-    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.95rem 2.2rem;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    border-left: 1px solid rgba(216, 180, 103, 0.35);
+    border-right: 1px solid rgba(216, 180, 103, 0.35);
+    background: radial-gradient(ellipse at center, rgba(115, 10, 24, 0.65) 0%, rgba(12, 1, 3, 0.95) 100%);
+    color: var(--gold-bright);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     text-transform: uppercase;
-    letter-spacing: 2.8px;
-    /* Esquinas doradas estilo encuadre ritual / mira cyber */
-    background-image:
-        linear-gradient(to right, var(--gold-bright) 10px, transparent 10px),
-        linear-gradient(to bottom, var(--gold-bright) 10px, transparent 10px),
-        linear-gradient(to left, var(--gold-bright) 10px, transparent 10px),
-        linear-gradient(to bottom, var(--gold-bright) 10px, transparent 10px),
-        linear-gradient(to right, var(--gold-bright) 10px, transparent 10px),
-        linear-gradient(to top, var(--gold-bright) 10px, transparent 10px),
-        linear-gradient(to left, var(--gold-bright) 10px, transparent 10px),
-        linear-gradient(to top, var(--gold-bright) 10px, transparent 10px);
-    background-size: 10px 2px, 2px 10px;
-    background-position:
-        top left, top left,
-        top right, top right,
-        bottom left, bottom left,
-        bottom right, bottom right;
-    background-repeat: no-repeat;
-    transition: all 0.35s ease;
+    letter-spacing: 3px;
+    box-shadow: 
+        0 6px 22px rgba(0, 0, 0, 0.85),
+        inset 0 0 15px rgba(216, 180, 103, 0.16);
+    transition: all 0.4s ease;
+}
+
+.btn-gold::before,
+.btn-gold::after {
+    content: "✦";
+    font-size: 0.72rem;
+    color: var(--cyber-red);
+    text-shadow: 0 0 8px var(--cyber-red);
+    transition: transform 0.4s ease, color 0.4s ease;
 }
 
 .btn-gold:hover {
     border-color: var(--gold-bright);
-    background-color: rgba(216, 180, 103, 0.12);
+    background: radial-gradient(ellipse at center, rgba(165, 16, 36, 0.8) 0%, rgba(25, 2, 5, 0.96) 100%);
     color: var(--ivory);
-    text-shadow: 0 0 10px var(--gold-glow);
-    box-shadow: 0 0 22px rgba(216, 180, 103, 0.25);
+    text-shadow: 0 0 12px var(--gold-bright);
+    box-shadow: 
+        0 0 28px var(--gold-glow),
+        0 0 40px var(--blood-glow),
+        inset 0 0 20px rgba(216, 180, 103, 0.28);
     transform: translateY(-2px);
+}
+
+.btn-gold:hover::before {
+    transform: rotate(90deg);
+    color: var(--gold-bright);
+}
+
+.btn-gold:hover::after {
+    transform: rotate(-90deg);
+    color: var(--gold-bright);
 }
 
 /* --- SECCIONES Y GALERÍA --- */
@@ -542,13 +562,46 @@ body {
     font-size: 1rem;
 }
 
-/* --- SEMBLANZA (CON LÍNEA DORADA SUPERIOR) --- */
+/* --- SEMBLANZA (CON FILETE DORADO DE LUJO) --- */
 .bio-section {
+    position: relative;
     margin-top: 6rem;
-    padding: 4.5rem 2rem;
-    border-top: 1px solid var(--gold); /* Línea dorada divisoria hacia Sobre mí */
+    padding: 5rem 2rem;
     text-align: center;
     background: radial-gradient(circle at center, rgba(110, 8, 20, 0.28) 0%, transparent 72%);
+}
+
+/* Filete dorado degradado con destello central */
+.bio-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(216, 180, 103, 0.35) 22%,
+        var(--gold-bright) 50%,
+        rgba(216, 180, 103, 0.35) 78%,
+        transparent 100%
+    );
+    box-shadow: 0 0 14px var(--gold-glow);
+}
+
+/* Rombo ornamental sobre el centro de la línea */
+.bio-section::after {
+    content: "✦";
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-crimson);
+    padding: 0 0.8rem;
+    color: var(--gold-bright);
+    font-size: 1.1rem;
+    text-shadow: 0 0 12px var(--gold-bright);
 }
 
 .bio-container {
@@ -609,7 +662,7 @@ body {
     .nav-container { flex-direction: column; gap: 1rem; }
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
     .hero { flex-direction: column; }
-    .hero-media { width: 100%; }
+    .hero-media { width: 100%; -webkit-mask-image: none; mask-image: none; }
     .cave-flashlight { display: none; }
     .hero-content { 
         position: relative; 
