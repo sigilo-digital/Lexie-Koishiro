@@ -1,6 +1,6 @@
 :root {
-    --bg-crimson: #1f0205;       /* Rojo sangre profundo */
-    --bg-darker: #0a0001;        /* Negro obsidiana */
+    --bg-crimson: #260307;       /* Carmesí profundo para el cuerpo y galería */
+    --bg-darker: #070001;        /* Negro obsidiana puro para el escenario de tu foto */
     --blood-glow: rgba(185, 15, 35, 0.35);
     --gold: #d8b467;             /* Dorado ritual */
     --gold-bright: #ffe6a3;      /* Destello dorado intenso */
@@ -31,7 +31,7 @@ body {
 
 /* --- ENCABEZADO CYBER-PAGANO --- */
 .navbar {
-    background-color: rgba(10, 0, 1, 0.94);
+    background-color: rgba(7, 0, 1, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(216, 180, 103, 0.35);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.85);
@@ -139,7 +139,7 @@ body {
     text-shadow: 0 0 10px var(--cyber-red);
 }
 
-/* --- HERO: FUSIÓN INVISIBLE Y DIVISIÓN DORADA ELEGANTE --- */
+/* --- HERO: NEGRO OBSIDIANA PURO PARA CONTRASTAR CON LA GALERÍA CARMESÍ --- */
 .hero {
     position: relative;
     width: 100%;
@@ -151,7 +151,6 @@ body {
     align-items: center;
 }
 
-/* Filete dorado elegante en la base del Hero con destello central */
 .hero::after {
     content: "";
     position: absolute;
@@ -176,7 +175,6 @@ body {
     width: 72%;
     max-width: 960px;
     line-height: 0;
-    /* Máscara directa sobre todo el contenedor para eliminar el corte izquierdo por completo */
     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 18%, black 36%, black 88%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 18%, black 36%, black 88%, transparent 100%);
 }
@@ -190,7 +188,6 @@ body {
     mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 86%, transparent 100%);
 }
 
-/* Linterna calibrada exactamente sobre tu rostro (34% horizontal, 25% vertical) */
 .cave-flashlight {
     display: block;
     position: absolute;
@@ -199,9 +196,9 @@ body {
     background: 
         radial-gradient(
             circle 250px at var(--x, 34%) var(--y, 25%), 
-            rgba(10, 0, 1, 0.0) 0%, 
-            rgba(10, 0, 1, 0.56) 55%, 
-            rgba(10, 0, 1, 0.92) 100%
+            rgba(7, 0, 1, 0.0) 0%, 
+            rgba(7, 0, 1, 0.56) 55%, 
+            rgba(7, 0, 1, 0.92) 100%
         ),
         radial-gradient(
             circle 150px at 34% 25%,
@@ -225,7 +222,7 @@ body {
     font-size: 0.78rem;
     letter-spacing: 3.5px;
     color: var(--cyber-red);
-    background: rgba(10, 0, 1, 0.88);
+    background: rgba(7, 0, 1, 0.88);
     border: 1px solid rgba(255, 36, 66, 0.45);
     padding: 0.35rem 0.9rem;
     margin-bottom: 1.1rem;
@@ -351,7 +348,7 @@ body {
     font-family: var(--font-title);
     color: var(--gold-bright);
     font-size: 1.2rem;
-    background: linear-gradient(180deg, rgba(25, 2, 5, 0.92) 0%, rgba(10, 0, 1, 0.95) 100%);
+    background: linear-gradient(180deg, rgba(25, 2, 5, 0.92) 0%, rgba(7, 0, 1, 0.95) 100%);
     border: 1px solid var(--gold);
     padding: 1rem 0.6rem;
     box-shadow: 
@@ -399,58 +396,52 @@ body {
     }
 }
 
-/* --- BOTÓN RELICARIO CYBER-PAGANO --- */
+/* --- BOTÓN CON ALTO CONTRASTE CARMESÍ Y DORADO --- */
 .btn-gold {
     position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.85rem;
-    padding: 0.95rem 2.2rem;
-    border-top: 1px solid var(--gold);
-    border-bottom: 1px solid var(--gold);
-    border-left: 1px solid rgba(216, 180, 103, 0.35);
-    border-right: 1px solid rgba(216, 180, 103, 0.35);
-    background: radial-gradient(ellipse at center, rgba(115, 10, 24, 0.65) 0%, rgba(12, 1, 3, 0.95) 100%);
-    color: var(--gold-bright);
+    padding: 0.95rem 2.3rem;
+    border: 1px solid var(--gold);
+    background: linear-gradient(135deg, #6e0814 0%, #3d030a 100%);
+    color: var(--ivory);
+    font-weight: 600;
     text-decoration: none;
     font-size: 0.88rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     box-shadow: 
-        0 6px 22px rgba(0, 0, 0, 0.85),
-        inset 0 0 15px rgba(216, 180, 103, 0.16);
-    transition: all 0.4s ease;
+        0 6px 24px rgba(0, 0, 0, 0.9),
+        0 0 18px rgba(185, 15, 35, 0.45),
+        inset 0 0 12px rgba(216, 180, 103, 0.25);
+    transition: all 0.35s ease;
 }
 
 .btn-gold::before,
 .btn-gold::after {
     content: "✦";
-    font-size: 0.72rem;
-    color: var(--cyber-red);
-    text-shadow: 0 0 8px var(--cyber-red);
-    transition: transform 0.4s ease, color 0.4s ease;
+    font-size: 0.75rem;
+    color: var(--gold-bright);
+    text-shadow: 0 0 8px var(--gold-bright);
+    transition: transform 0.35s ease, color 0.35s ease;
 }
 
 .btn-gold:hover {
     border-color: var(--gold-bright);
-    background: radial-gradient(ellipse at center, rgba(165, 16, 36, 0.8) 0%, rgba(25, 2, 5, 0.96) 100%);
-    color: var(--ivory);
-    text-shadow: 0 0 12px var(--gold-bright);
+    background: linear-gradient(135deg, var(--gold) 0%, #b58d3d 100%);
+    color: var(--bg-darker);
     box-shadow: 
         0 0 28px var(--gold-glow),
-        0 0 40px var(--blood-glow),
-        inset 0 0 20px rgba(216, 180, 103, 0.28);
+        0 0 45px rgba(216, 180, 103, 0.35);
     transform: translateY(-2px);
 }
 
-.btn-gold:hover::before {
-    transform: rotate(90deg);
-    color: var(--gold-bright);
-}
-
+.btn-gold:hover::before,
 .btn-gold:hover::after {
-    transform: rotate(-90deg);
-    color: var(--gold-bright);
+    color: var(--bg-darker);
+    text-shadow: none;
+    transform: rotate(90deg);
 }
 
 /* --- SECCIONES Y GALERÍA --- */
@@ -562,7 +553,7 @@ body {
     font-size: 1rem;
 }
 
-/* --- SEMBLANZA (CON FILETE DORADO DE LUJO) --- */
+/* --- SEMBLANZA --- */
 .bio-section {
     position: relative;
     margin-top: 6rem;
@@ -571,7 +562,6 @@ body {
     background: radial-gradient(circle at center, rgba(110, 8, 20, 0.28) 0%, transparent 72%);
 }
 
-/* Filete dorado degradado con destello central */
 .bio-section::before {
     content: "";
     position: absolute;
@@ -590,7 +580,6 @@ body {
     box-shadow: 0 0 14px var(--gold-glow);
 }
 
-/* Rombo ornamental sobre el centro de la línea */
 .bio-section::after {
     content: "✦";
     position: absolute;
