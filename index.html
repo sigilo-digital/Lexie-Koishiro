@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lexie Koishiro — Portafolio</title>
-    <!-- Tipografía editorial clásica similar a la referencia -->
+    <!-- Nuevas tipografías: Yuji Syuku (trazo asiático) + Space Grotesk (toque cyber) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- ENCABEZADO CON MARCO RITUAL Y LÍNEA DORADA -->
     <header class="navbar">
         <div class="nav-container">
             <a href="#" class="brand-box">
                 <span class="brand-name">LEXIE KOISHIRO</span>
-                <span class="brand-symbol">✦</span>
+                <span class="brand-symbol">⛩ ✦ ⛩</span>
             </a>
 
             <nav class="nav-links">
@@ -35,85 +34,45 @@
         </div>
     </header>
 
-    <!-- SECCIÓN PRINCIPAL (HERO) CON FOTOGRAFÍA DE FONDO -->
-    <!-- Cambia 'hero-performance.jpg' por el nombre de tu foto principal -->
-    <section class="hero" style="background-image: linear-gradient(to right, rgba(42, 4, 6, 0.85) 0%, rgba(58, 7, 10, 0.45) 50%, rgba(42, 4, 6, 0.75) 100%), url('hero-performance.jpg');">
+    <!-- HERO CON EFECTO LINTERNA -->
+    <section class="hero" id="hero-cave">
+        <!-- Capa de oscuridad dinámica -->
+        <div class="cave-flashlight"></div>
+        
         <div class="hero-content">
+            <span class="cyber-tag">[ ARCHIVO_00 // RITUAL_VIVO ]</span>
             <h1>Portafolio</h1>
             <p class="hero-subtitle">Galería y <em>Performances en Vivo</em></p>
         </div>
     </section>
 
-    <!-- GALERÍA DE PERFORMANCES Y OBRA -->
-    <main class="main-content">
-        <section id="portafolio" class="section-block">
-            <div class="section-header">
-                <span class="ornament">✦</span>
-                <h2>Archivo Escénico <em>&</em> Ritual</h2>
-                <p>Registro fotográfico, acciones corporales y piezas de investigación.</p>
-            </div>
+    <!-- EL RESTO DE TU MAIN Y FOOTER SE QUEDAN IGUAL POR AHORA... -->
+    <!-- (Aquí va tu <main> y tu <footer> que ya tenías) -->
 
-            <div class="gallery-grid">
-                <!-- Pieza 1 -->
-                <article class="work-item">
-                    <div class="work-image">
-                        <!-- Sube tus fotos al repositorio y pon aquí su nombre -->
-                        <img src="obra1.jpg" alt="Nombre de la pieza 1">
-                    </div>
-                    <div class="work-info">
-                        <span class="work-year">2026 — Performance / Ritual</span>
-                        <h3>Título de la Primera Acción</h3>
-                        <p>Breve descripción conceptual de la pieza corporal, duración y espacio donde se presentó.</p>
-                    </div>
-                </article>
+    <!-- SCRIPT PARA LA LINTERNA EN LA CUEVA -->
+    <script>
+        const hero = document.getElementById('hero-cave');
+        const flashlight = document.querySelector('.cave-flashlight');
 
-                <!-- Pieza 2 -->
-                <article class="work-item">
-                    <div class="work-image">
-                        <img src="obra2.jpg" alt="Nombre de la pieza 2">
-                    </div>
-                    <div class="work-info">
-                        <span class="work-year">2025 — Arte Corporal</span>
-                        <h3>Título de la Segunda Obra</h3>
-                        <p>Exploración sobre el cuerpo, lo simbólico y la presencia escénica. Ficha técnica o curaduría.</p>
-                    </div>
-                </article>
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            flashlight.style.setProperty('--x', `${x}px`);
+            flashlight.style.setProperty('--y', `${y}px`);
+        });
 
-                <!-- Pieza 3 -->
-                <article class="work-item">
-                    <div class="work-image">
-                        <img src="obra3.jpg" alt="Nombre de la pieza 3">
-                    </div>
-                    <div class="work-info">
-                        <span class="work-year">2025 — Colaboración</span>
-                        <h3>Título de la Tercera Pieza</h3>
-                        <p>Registro visual de intervención o pieza en vivo.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- SECCIÓN SOBRE MÍ / SEMBLANZA -->
-        <section id="sobre-mi" class="section-block bio-section">
-            <div class="bio-container">
-                <h2>Semblanza <em>Artística</em></h2>
-                <p>Aquí va tu declaración de artista y trayectoria como performer y creadora corporal. Puedes hablar de tu investigación en torno al cuerpo, el ritual contemporáneo, lo místico y las artes vivas.</p>
-                <a href="#contacto" class="btn-gold">Solicitar Dossier / Contacto</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- PIE DE PÁGINA -->
-    <footer id="contacto" class="footer">
-        <div class="footer-content">
-            <p>© 2026 Lexie Koishiro — Todos los derechos reservados.</p>
-            <div class="footer-links">
-                <a href="mailto:tu-correo@ejemplo.com">tu-correo@ejemplo.com</a>
-                <span>•</span>
-                <a href="https://instagram.com" target="_blank">Instagram</a>
-            </div>
-        </div>
-    </footer>
-
+        // Soporte táctil para celulares (ilumina donde toques)
+        hero.addEventListener('touchmove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            const touch = e.touches[0];
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
+            
+            flashlight.style.setProperty('--x', `${x}px`);
+            flashlight.style.setProperty('--y', `${y}px`);
+        });
+    </script>
 </body>
 </html>
