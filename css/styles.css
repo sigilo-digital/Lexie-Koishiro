@@ -1,11 +1,11 @@
 :root {
-    --bg-crimson: #1f0205;       /* Rojo sangre muy profundo */
-    --bg-darker: #0a0001;        /* Negro obsidiana */
-    --blood-glow: rgba(185, 15, 35, 0.35); /* Aura roja mística */
+    --bg-crimson: #1f0205;       /* Rojo sangre profundo */
+    --bg-darker: #090001;        /* Negro obsidiana */
+    --blood-glow: rgba(190, 15, 35, 0.38);
     --gold: #d8b467;             /* Dorado ritual */
-    --gold-bright: #ffe6a3;      /* Destello dorado intenso */
+    --gold-bright: #ffe6a3;      /* Destello dorado */
     --gold-glow: rgba(216, 180, 103, 0.45);
-    --cyber-red: #ff2442;        /* Rojo carmesí vibrante */
+    --cyber-red: #ff2442;        /* Carmesí neón */
     --ivory: #f7f1e8;
     --text-muted: #c4abab;
     --font-title: 'Yuji Syuku', serif;
@@ -27,144 +27,175 @@ body {
     color: var(--ivory);
     font-family: var(--font-body);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* --- ENCABEZADO CYBER-PAGANO --- */
-.navbar {
-    background-color: rgba(10, 0, 1, 0.94);
-    backdrop-filter: blur(10px);
+/* --- PERGAMINO VERTICAL (KAKEMONO CYBER-PAGANO) --- */
+.scroll-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% 42%, rgba(125, 10, 24, 0.32) 0%, var(--bg-darker) 68%);
     border-bottom: 1px solid rgba(216, 180, 103, 0.45);
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.85), 0 1px 12px var(--blood-glow);
-    padding: 1rem 3rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.nav-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Sello del nombre en el encabezado */
-.brand-box {
-    border: 1px solid var(--gold);
-    padding: 0.5rem 1.3rem;
-    text-decoration: none;
-    color: var(--gold);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    padding: 2rem 2rem 3.5rem;
+    overflow: hidden;
+    cursor: crosshair;
+    /* Marco doble de estampa japonesa */
+    box-shadow: 
+        inset 0 0 70px rgba(0, 0, 0, 0.92),
+        inset 0 0 0 12px var(--bg-darker),
+        inset 0 0 0 13px rgba(216, 180, 103, 0.35),
+        inset 0 0 30px rgba(190, 15, 35, 0.25);
+}
+
+/* Emblema superior del tótem */
+.top-totem {
     position: relative;
-    background: radial-gradient(circle at center, rgba(185, 15, 35, 0.15) 0%, transparent 80%);
-    box-shadow: 0 0 15px rgba(216, 180, 103, 0.15), inset 0 0 10px rgba(185, 15, 35, 0.2);
-    transition: all 0.4s ease;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
 }
 
-.brand-box:hover {
-    border-color: var(--gold-bright);
-    box-shadow: 0 0 22px var(--gold-glow), inset 0 0 15px var(--blood-glow);
-    transform: translateY(-1px);
-}
-
-.brand-name {
-    font-family: var(--font-title);
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    text-shadow: 0 0 10px rgba(216, 180, 103, 0.35);
-}
-
-.brand-symbol {
-    font-size: 0.85rem;
-    margin-top: 2px;
+.totem-tag {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
     color: var(--cyber-red);
+    background: rgba(9, 0, 1, 0.88);
+    border: 1px solid rgba(255, 36, 66, 0.45);
+    padding: 0.3rem 1rem;
+    text-shadow: 0 0 10px var(--cyber-red);
+    box-shadow: 0 0 15px rgba(255, 36, 66, 0.2);
+}
+
+.totem-emblem {
+    font-size: 0.95rem;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-shadow: 0 0 10px var(--gold-glow);
+}
+
+/* --- COLUMNAS LATERALES DE NAVEGACIÓN (ESTILO INSCRIPCIÓN UKIYO-E) --- */
+.side-pillar {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.left-pillar {
+    left: 2.2rem;
+    align-items: flex-start;
+}
+
+.right-pillar {
+    right: 2.2rem;
+    align-items: flex-end;
+}
+
+.pillar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--gold);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(9, 0, 1, 0.78);
+    backdrop-filter: blur(4px);
+    padding: 0.4rem 0.75rem;
+    border: 1px solid rgba(216, 180, 103, 0.25);
+    transition: all 0.35s ease;
+}
+
+.right-pillar .pillar-link {
+    flex-direction: row-reverse;
+}
+
+.node-num {
+    color: var(--cyber-red);
+    font-weight: 600;
+    font-size: 0.75rem;
     text-shadow: 0 0 8px var(--cyber-red);
 }
 
-.nav-links {
-    display: flex;
-    gap: 2.2rem;
-}
-
-.nav-links a {
-    position: relative;
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 0.92rem;
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    padding-bottom: 4px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-/* Línea mística roja y dorada que nace bajo cada enlace */
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyber-red), var(--gold-bright), var(--cyber-red), transparent);
-    transform: translateX(-50%);
-    transition: width 0.35s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
+.pillar-link:hover {
     color: var(--gold-bright);
-    text-shadow: 0 0 12px var(--gold-glow), 0 0 20px var(--blood-glow);
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 18px var(--gold-glow), inset 0 0 10px var(--blood-glow);
+    transform: translateX(4px);
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
+.right-pillar .pillar-link:hover {
+    transform: translateX(-4px);
 }
 
-.nav-socials {
+/* Hilos rituales que conectan los enlaces */
+.pillar-thread {
+    width: 1px;
+    height: 26px;
+    background: linear-gradient(to bottom, var(--gold), var(--cyber-red), transparent);
+    margin: 0 1.2rem;
+    opacity: 0.6;
+}
+
+.pillar-socials {
     display: flex;
-    gap: 1.2rem;
+    align-items: center;
+    gap: 0.7rem;
+    background: rgba(9, 0, 1, 0.82);
+    border: 1px solid rgba(216, 180, 103, 0.3);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    color: var(--cyber-red);
 }
 
-.nav-socials a {
+.pillar-socials a {
     color: var(--gold);
     text-decoration: none;
-    font-size: 1rem;
     transition: color 0.3s, text-shadow 0.3s;
 }
 
-.nav-socials a:hover {
-    color: var(--cyber-red);
-    text-shadow: 0 0 10px var(--cyber-red);
+.pillar-socials a:hover {
+    color: var(--gold-bright);
+    text-shadow: 0 0 10px var(--gold-bright);
 }
 
-/* --- HERO: ESTAMPA UKIYO-E MÍSTICA --- */
-.hero {
-    position: relative;
-    width: 100%;
-    /* Neblina sutil rojo sangre emergiendo desde el negro obsidiana */
-    background: radial-gradient(circle at 22% 45%, rgba(110, 8, 20, 0.28) 0%, var(--bg-darker) 65%);
-    border-bottom: 1px solid rgba(216, 180, 103, 0.45);
-    overflow: hidden;
-    cursor: crosshair;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    /* Marco doble ritualizado con aura carmesí interior */
-    box-shadow: 
-        inset 0 0 60px rgba(0, 0, 0, 0.9),
-        inset 0 0 0 12px var(--bg-darker), 
-        inset 0 0 0 13px rgba(216, 180, 103, 0.35),
-        inset 0 0 25px rgba(185, 15, 35, 0.25);
+/* --- SIGILO GEOMÉTRICO KITSUNE SVG --- */
+.kitsune-sigil-bg {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(640px, 85vw);
+    height: min(640px, 85vw);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.75;
+    animation: sigilRotate 60s linear infinite;
 }
 
+@keyframes sigilRotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* --- EJE CENTRAL: FOTOGRAFÍA + LINTERNA --- */
 .hero-media {
     position: relative;
-    width: 68%;
-    max-width: 900px;
+    width: min(740px, 78vw);
+    margin: -1rem auto -3.5rem;
+    z-index: 2;
     line-height: 0;
 }
 
@@ -173,11 +204,10 @@ body {
     height: auto;
     display: block;
     filter: contrast(1.12) brightness(0.92) saturate(1.08);
-    -webkit-mask-image: radial-gradient(ellipse 62% 85% at 58% 50%, black 45%, transparent 96%);
-    mask-image: radial-gradient(ellipse 62% 85% at 58% 50%, black 45%, transparent 96%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 82% at 50% 48%, black 42%, transparent 94%);
+    mask-image: radial-gradient(ellipse 60% 82% at 50% 48%, black 42%, transparent 94%);
 }
 
-/* Linterna calibrada al rostro */
 .cave-flashlight {
     display: block;
     position: absolute;
@@ -185,59 +215,154 @@ body {
     pointer-events: none;
     background: 
         radial-gradient(
-            circle 250px at var(--x, 43%) var(--y, 25%), 
-            rgba(10, 0, 1, 0.0) 0%, 
-            rgba(10, 0, 1, 0.58) 55%, 
+            circle 250px at var(--x, 46%) var(--y, 26%), 
+            rgba(9, 0, 1, 0.0) 0%, 
+            rgba(9, 0, 1, 0.58) 55%, 
             rgba(6, 0, 1, 0.88) 100%
         ),
         radial-gradient(
-            circle 145px at 43% 25%,
-            rgba(255, 235, 225, 0.15) 0%,
+            circle 145px at 46% 26%,
+            rgba(255, 235, 225, 0.16) 0%,
             transparent 75%
         );
-    z-index: 2;
+    z-index: 3;
 }
 
-.hero-content {
+/* --- SELLO VERTICAL DE GRABADO (狐 + こいしろ) --- */
+.kanji-seal {
     position: absolute;
-    left: 7%;
-    top: 12%;
-    z-index: 3;
-    max-width: 480px;
+    right: 14%;
+    bottom: 18%;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-title);
+    color: var(--gold-bright);
+    background: linear-gradient(180deg, rgba(25, 2, 5, 0.94) 0%, rgba(9, 0, 1, 0.96) 100%);
+    border: 1px solid var(--gold);
+    padding: 0.95rem 0.6rem;
+    box-shadow: 
+        0 0 0 3px var(--bg-darker), 
+        0 0 0 4px rgba(216, 180, 103, 0.45),
+        0 0 25px rgba(190, 15, 35, 0.45),
+        inset 0 0 14px rgba(216, 180, 103, 0.2);
+    pointer-events: none;
+    animation: sealAura 4.5s infinite ease-in-out;
+}
+
+.kanji-seal span:first-child {
+    font-size: 1.35rem;
+    color: var(--cyber-red);
+    text-shadow: 0 0 12px var(--cyber-red), 0 0 22px rgba(255, 36, 66, 0.65);
+}
+
+.kanji-line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--cyber-red), var(--gold-bright));
+}
+
+.vertical-hiragana {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 5px;
+    font-size: 1.05rem;
+    color: var(--gold-bright);
+    text-shadow: 0 0 10px var(--gold-glow);
+}
+
+@keyframes sealAura {
+    0%, 100% { 
+        box-shadow: 0 0 0 3px var(--bg-darker), 0 0 0 4px rgba(216, 180, 103, 0.4), 0 0 20px rgba(190, 15, 35, 0.35), inset 0 0 12px rgba(216, 180, 103, 0.15);
+    }
+    50% { 
+        box-shadow: 0 0 0 3px var(--bg-darker), 0 0 0 4px rgba(255, 230, 163, 0.78), 0 0 32px rgba(216, 180, 103, 0.38), inset 0 0 18px rgba(255, 36, 66, 0.28);
+    }
+}
+
+/* --- BASE DEL TÓTEM: TÍTULO CON GLITCH Y MANIFIESTO --- */
+.hero-totem-footer {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título con efecto Glitch Espectral */
+.glitch-title {
+    position: relative;
+    font-family: var(--font-title);
+    font-size: clamp(3.4rem, 6vw, 5.8rem);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ivory);
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+    text-shadow: 
+        0 4px 25px rgba(0, 0, 0, 0.98),
+        0 0 25px rgba(216, 180, 103, 0.35),
+        0 0 50px rgba(190, 15, 35, 0.4);
+    cursor: default;
+}
+
+.glitch-title::before,
+.glitch-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
     pointer-events: none;
 }
 
-.cyber-tag {
-    display: inline-block;
-    font-size: 0.78rem;
-    letter-spacing: 3.5px;
+.glitch-title::before {
     color: var(--cyber-red);
-    background: rgba(10, 0, 1, 0.88);
-    border: 1px solid rgba(255, 36, 66, 0.45);
-    box-shadow: 0 0 15px rgba(255, 36, 66, 0.2), inset 0 0 8px rgba(255, 36, 66, 0.15);
-    padding: 0.35rem 0.9rem;
-    margin-bottom: 1.1rem;
-    text-shadow: 0 0 10px rgba(255, 36, 66, 0.75);
+    text-shadow: -2px 0 var(--cyber-red);
 }
 
-/* Título principal con halo dorado y profundidad carmesí */
-.hero h1 {
-    font-family: var(--font-title);
-    font-size: clamp(3.6rem, 5.5vw, 5.6rem);
-    font-weight: 400;
-    line-height: 0.96;
-    color: var(--ivory);
-    margin-bottom: 0.9rem;
-    text-shadow: 
-        0 4px 20px rgba(0, 0, 0, 0.95),
-        0 0 22px rgba(216, 180, 103, 0.32),
-        0 0 45px rgba(185, 15, 35, 0.35);
+.glitch-title::after {
+    color: var(--gold-bright);
+    text-shadow: 2px 0 var(--gold-bright);
+}
+
+/* Activación del Glitch al pasar el cursor y pulsos periódicos */
+.glitch-title:hover::before {
+    opacity: 0.85;
+    animation: glitchSlice1 0.35s infinite linear alternate-reverse;
+}
+
+.glitch-title:hover::after {
+    opacity: 0.85;
+    animation: glitchSlice2 0.35s infinite linear alternate-reverse;
+}
+
+@keyframes glitchSlice1 {
+    0% { clip-path: inset(15% 0 65% 0); transform: translate(-4px, -1px); }
+    25% { clip-path: inset(55% 0 20% 0); transform: translate(4px, 1px); }
+    50% { clip-path: inset(30% 0 45% 0); transform: translate(-3px, 2px); }
+    75% { clip-path: inset(70% 0 10% 0); transform: translate(3px, -2px); }
+    100% { clip-path: inset(10% 0 75% 0); transform: translate(-2px, 0); }
+}
+
+@keyframes glitchSlice2 {
+    0% { clip-path: inset(60% 0 15% 0); transform: translate(4px, 1px); }
+    25% { clip-path: inset(20% 0 60% 0); transform: translate(-4px, -1px); }
+    50% { clip-path: inset(45% 0 30% 0); transform: translate(3px, -2px); }
+    75% { clip-path: inset(10% 0 70% 0); transform: translate(-3px, 2px); }
+    100% { clip-path: inset(75% 0 10% 0); transform: translate(2px, 0); }
 }
 
 .hero-subtitle {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
     font-weight: 300;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     color: var(--text-muted);
 }
 
@@ -249,78 +374,30 @@ body {
 }
 
 .hero-manifesto {
-    margin-top: 1.4rem;
-    font-size: 1rem;
+    margin-top: 1rem;
+    font-size: 0.98rem;
     color: var(--text-muted);
-    line-height: 1.7;
-    border-left: 2px solid var(--gold);
-    background: linear-gradient(90deg, rgba(130, 10, 24, 0.25) 0%, transparent 100%);
-    padding: 0.65rem 1.1rem;
-    box-shadow: -4px 0 15px -4px var(--gold-glow);
+    max-width: 520px;
+    padding: 0.5rem 1rem;
+    border-top: 1px solid rgba(216, 180, 103, 0.25);
+    border-bottom: 1px solid rgba(216, 180, 103, 0.25);
+    background: radial-gradient(circle at center, rgba(130, 10, 24, 0.25) 0%, transparent 80%);
 }
 
 .hero-actions {
-    margin-top: 2.1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.1rem;
-    pointer-events: auto;
-}
-
-.cave-hint {
-    font-size: 0.8rem;
-    letter-spacing: 2.2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    animation: mysticPulse 3.5s infinite ease-in-out;
-}
-
-/* --- SELLO VERTICAL MÍSTICO (狐 + こいしろ) --- */
-.kanji-seal {
-    position: absolute;
-    right: 2.5rem;
-    top: 16%;
-    z-index: 3;
+    margin-top: 1.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.55rem;
-    font-family: var(--font-title);
-    color: var(--gold-bright);
-    font-size: 1.2rem;
-    background: linear-gradient(180deg, rgba(25, 2, 5, 0.92) 0%, rgba(10, 0, 1, 0.95) 100%);
-    border: 1px solid var(--gold);
-    padding: 1rem 0.6rem;
-    box-shadow: 
-        0 0 0 3px var(--bg-darker), 
-        0 0 0 4px rgba(216, 180, 103, 0.45),
-        0 0 25px rgba(185, 15, 35, 0.4),
-        inset 0 0 14px rgba(216, 180, 103, 0.2);
-    pointer-events: none;
-    animation: sealAura 4.5s infinite ease-in-out;
+    gap: 0.9rem;
 }
 
-.kanji-seal span:first-child {
-    font-size: 1.35rem;
-    color: var(--cyber-red);
-    text-shadow: 0 0 12px var(--cyber-red), 0 0 22px rgba(255, 36, 66, 0.6);
-}
-
-.kanji-line {
-    width: 1px;
-    height: 34px;
-    background: linear-gradient(to bottom, var(--cyber-red), var(--gold-bright));
-    box-shadow: 0 0 8px var(--gold-glow);
-}
-
-.vertical-hiragana {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    letter-spacing: 5px;
-    font-size: 1.08rem;
-    color: var(--gold-bright);
-    text-shadow: 0 0 10px var(--gold-glow), 0 0 18px rgba(216, 180, 103, 0.35);
+.cave-hint {
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    animation: mysticPulse 3.5s infinite ease-in-out;
 }
 
 @keyframes mysticPulse {
@@ -328,45 +405,34 @@ body {
     50% { opacity: 1; text-shadow: 0 0 10px var(--gold), 0 0 18px var(--cyber-red); }
 }
 
-@keyframes sealAura {
-    0%, 100% { 
-        box-shadow: 0 0 0 3px var(--bg-darker), 0 0 0 4px rgba(216, 180, 103, 0.4), 0 0 20px rgba(185, 15, 35, 0.35), inset 0 0 12px rgba(216, 180, 103, 0.15);
-    }
-    50% { 
-        box-shadow: 0 0 0 3px var(--bg-darker), 0 0 0 4px rgba(255, 230, 163, 0.75), 0 0 30px rgba(216, 180, 103, 0.35), inset 0 0 18px rgba(255, 36, 66, 0.25);
-    }
-}
-
 /* --- BOTÓN TALISMÁN RITUAL --- */
 .btn-gold {
     position: relative;
     display: inline-block;
-    padding: 0.9rem 2.3rem;
+    padding: 0.9rem 2.4rem;
     border: 1px solid var(--gold);
-    background: linear-gradient(135deg, rgba(15, 1, 2, 0.92) 0%, rgba(55, 5, 10, 0.85) 100%);
+    background: linear-gradient(135deg, rgba(12, 1, 2, 0.94) 0%, rgba(65, 5, 12, 0.88) 100%);
     color: var(--gold-bright);
     text-decoration: none;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 2.5px;
+    letter-spacing: 2.8px;
     overflow: hidden;
     box-shadow: 
-        0 0 15px rgba(0, 0, 0, 0.8),
-        inset 0 0 12px rgba(216, 180, 103, 0.15);
+        0 0 18px rgba(0, 0, 0, 0.85),
+        inset 0 0 12px rgba(216, 180, 103, 0.18);
     transition: all 0.4s ease;
 }
 
-/* Doble marco interior sutil en el botón */
 .btn-gold::before {
     content: "";
     position: absolute;
     inset: 3px;
-    border: 1px solid rgba(255, 36, 66, 0.35);
+    border: 1px solid rgba(255, 36, 66, 0.4);
     pointer-events: none;
     transition: border-color 0.4s ease;
 }
 
-/* Destello de luz que cruza el botón al pasar el cursor */
 .btn-gold::after {
     content: "";
     position: absolute;
@@ -374,7 +440,7 @@ body {
     left: -100%;
     width: 60%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 230, 163, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 230, 163, 0.35), transparent);
     transform: skewX(-25deg);
     transition: left 0.6s ease;
 }
@@ -382,16 +448,16 @@ body {
 .btn-gold:hover {
     border-color: var(--gold-bright);
     color: var(--ivory);
-    text-shadow: 0 0 10px var(--gold-bright);
+    text-shadow: 0 0 12px var(--gold-bright);
     box-shadow: 
-        0 0 25px var(--gold-glow),
-        0 0 40px var(--blood-glow),
-        inset 0 0 18px rgba(255, 36, 66, 0.3);
+        0 0 28px var(--gold-glow),
+        0 0 42px var(--blood-glow),
+        inset 0 0 20px rgba(255, 36, 66, 0.32);
     transform: translateY(-2px);
 }
 
 .btn-gold:hover::before {
-    border-color: rgba(216, 180, 103, 0.6);
+    border-color: rgba(216, 180, 103, 0.65);
 }
 
 .btn-gold:hover::after {
@@ -400,7 +466,7 @@ body {
 
 /* --- SECCIONES Y GALERÍA --- */
 .main-content {
-    max-width: 1200px;
+    max-width: 1120px;
     margin: 0 auto;
     padding: 5.5rem 2rem;
 }
@@ -439,11 +505,10 @@ body {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2.5rem;
 }
 
-/* Tarjetas enmarcadas como relicarios */
 .work-item {
     border: 1px solid rgba(216, 180, 103, 0.35);
     background: linear-gradient(180deg, var(--bg-darker) 0%, #160103 100%);
@@ -467,7 +532,7 @@ body {
     box-shadow: 
         0 15px 35px rgba(0, 0, 0, 0.85), 
         0 0 22px var(--gold-glow),
-        inset 0 0 20px rgba(185, 15, 35, 0.25);
+        inset 0 0 20px rgba(190, 15, 35, 0.25);
 }
 
 .work-item:hover::after {
@@ -584,22 +649,42 @@ body {
     text-shadow: 0 0 8px var(--gold-glow);
 }
 
-/* --- RESPONSIVO PARA CELULARES --- */
-@media (max-width: 850px) {
-    .navbar { padding: 1rem; }
-    .nav-container { flex-direction: column; gap: 1rem; }
-    .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
-    .hero { flex-direction: column; box-shadow: none; }
-    .hero-media { width: 100%; }
-    .cave-flashlight { display: none; }
-    .hero-content { 
-        position: relative; 
-        left: auto; 
-        top: auto; 
-        padding: 2.5rem 1.5rem; 
-        max-width: 100%;
+/* --- RESPONSIVO PARA CELULARES Y PANTALLAS MEDIANAS --- */
+@media (max-width: 1100px) {
+    .side-pillar {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0.5rem 0;
     }
-    .hero h1 { font-size: 3.4rem; }
-    .hero-subtitle { font-size: 1.3rem; }
-    .kanji-seal { display: none; }
+    .pillar-thread {
+        display: none;
+    }
+    .right-pillar .pillar-link {
+        flex-direction: row;
+    }
+    .kanji-seal {
+        right: 1.5rem;
+        bottom: auto;
+        top: 6rem;
+    }
+}
+
+@media (max-width: 750px) {
+    .scroll-hero {
+        box-shadow: none;
+        padding: 1.5rem 1rem 3rem;
+    }
+    .hero-media {
+        width: 100%;
+        margin: 0 auto -1.5rem;
+    }
+    .cave-flashlight {
+        display: none;
+    }
+    .kanji-seal {
+        display: none;
+    }
 }
