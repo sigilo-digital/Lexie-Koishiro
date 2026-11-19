@@ -1,13 +1,14 @@
 :root {
-    --bg-crimson: #260307;       /* Carmesí profundo para el cuerpo y galería */
+    --bg-torii: #6e0714;         /* Rojo bermellón torii profundo */
+    --bg-crimson: #2b0207;       /* Sombra carmesí para degradados */
     --bg-darker: #070001;        /* Negro obsidiana puro para el escenario de tu foto */
-    --blood-glow: rgba(185, 15, 35, 0.35);
+    --blood-glow: rgba(224, 25, 51, 0.45);
     --gold: #d8b467;             /* Dorado ritual */
     --gold-bright: #ffe6a3;      /* Destello dorado intenso */
     --gold-glow: rgba(216, 180, 103, 0.45);
     --cyber-red: #ff2442;        /* Rojo bermellón torii vibrante */
     --ivory: #f7f1e8;
-    --text-muted: #c4abab;
+    --text-muted: #e0cccc;
     --font-title: 'Yuji Syuku', serif;
     --font-body: 'Space Grotesk', sans-serif;
 }
@@ -23,18 +24,30 @@ html {
 }
 
 body {
+    /* Degradado atmosférico en rojo Torii lacado para Archivo Escénico y Semblanza */
     background-color: var(--bg-crimson);
+    background-image: 
+        radial-gradient(ellipse 85% 55% at 50% 25%, rgba(168, 13, 34, 0.55) 0%, transparent 75%),
+        radial-gradient(ellipse 80% 50% at 50% 80%, rgba(145, 11, 29, 0.48) 0%, transparent 75%),
+        linear-gradient(180deg, #42030b 0%, #6e0714 48%, #260206 100%);
+    background-attachment: fixed;
     color: var(--ivory);
     font-family: var(--font-body);
     line-height: 1.6;
 }
 
-/* --- ENCABEZADO CYBER-PAGANO --- */
+/* --- ENCABEZADO CYBER-PAGANO EN DEGRADADO TORII --- */
 .navbar {
-    background-color: rgba(7, 0, 1, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(216, 180, 103, 0.35);
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.85);
+    background: linear-gradient(
+        90deg,
+        #180104 0%,
+        #680613 25%,
+        #850919 50%,
+        #680613 75%,
+        #180104 100%
+    );
+    border-bottom: 1px solid rgba(216, 180, 103, 0.55);
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.85), inset 0 -1px 12px rgba(255, 36, 66, 0.25);
     padding: 1rem 3rem;
     position: sticky;
     top: 0;
@@ -53,18 +66,18 @@ body {
     border: 1px solid var(--gold);
     padding: 0.5rem 1.3rem;
     text-decoration: none;
-    color: var(--gold);
+    color: var(--gold-bright);
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    background: radial-gradient(circle at center, rgba(185, 15, 35, 0.15) 0%, transparent 80%);
-    box-shadow: 0 0 15px rgba(216, 180, 103, 0.15);
+    background: radial-gradient(circle at center, rgba(7, 0, 1, 0.72) 0%, rgba(7, 0, 1, 0.92) 100%);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.65), inset 0 0 10px rgba(216, 180, 103, 0.2);
     transition: all 0.4s ease;
 }
 
 .brand-box:hover {
-    border-color: var(--gold-bright);
+    border-color: #ffffff;
     box-shadow: 0 0 22px var(--gold-glow);
     transform: translateY(-1px);
 }
@@ -73,7 +86,7 @@ body {
     font-family: var(--font-title);
     font-size: 1.2rem;
     letter-spacing: 3px;
-    text-shadow: 0 0 10px rgba(216, 180, 103, 0.35);
+    text-shadow: 0 0 10px rgba(216, 180, 103, 0.45);
 }
 
 .brand-symbol {
@@ -90,12 +103,14 @@ body {
 
 .nav-links a {
     position: relative;
-    color: var(--gold);
+    color: var(--ivory);
     text-decoration: none;
     font-size: 0.92rem;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 1.8px;
     padding-bottom: 4px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
@@ -105,7 +120,7 @@ body {
     left: 50%;
     bottom: 0;
     width: 0;
-    height: 1px;
+    height: 1.5px;
     background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
     transform: translateX(-50%);
     transition: width 0.35s ease;
@@ -128,15 +143,16 @@ body {
 }
 
 .nav-socials a {
-    color: var(--gold);
+    color: var(--gold-bright);
     text-decoration: none;
     font-size: 1rem;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
     transition: color 0.3s, text-shadow 0.3s;
 }
 
 .nav-socials a:hover {
-    color: var(--cyber-red);
-    text-shadow: 0 0 10px var(--cyber-red);
+    color: #ffffff;
+    text-shadow: 0 0 10px var(--gold-bright);
 }
 
 /* --- HERO: NEGRO OBSIDIANA PURO CON FUSIÓN INVISIBLE --- */
@@ -162,12 +178,12 @@ body {
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(216, 180, 103, 0.35) 20%,
+        rgba(216, 180, 103, 0.45) 20%,
         var(--gold-bright) 50%,
-        rgba(216, 180, 103, 0.35) 80%,
+        rgba(216, 180, 103, 0.45) 80%,
         transparent 100%
     );
-    box-shadow: 0 0 14px var(--gold-glow);
+    box-shadow: 0 0 16px var(--gold-glow);
     z-index: 5;
 }
 
@@ -449,6 +465,25 @@ body {
     transform: rotate(-90deg);
 }
 
+/* Contraste para el botón dentro de la sección roja de Semblanza */
+.bio-section .btn-gold {
+    background: linear-gradient(135deg, #0d0002 0%, #240206 100%);
+    border-color: var(--gold-bright);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.75);
+}
+
+.bio-section .btn-gold:hover {
+    background: linear-gradient(135deg, var(--gold) 0%, #b58d3d 100%);
+    color: var(--bg-darker);
+    text-shadow: none;
+}
+
+.bio-section .btn-gold:hover::before,
+.bio-section .btn-gold:hover::after {
+    color: var(--bg-darker);
+    text-shadow: none;
+}
+
 /* --- SECCIONES Y GALERÍA --- */
 .main-content {
     max-width: 1200px;
@@ -462,11 +497,11 @@ body {
 }
 
 .ornament {
-    color: var(--cyber-red);
+    color: var(--gold-bright);
     font-size: 1.5rem;
     display: block;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 12px var(--cyber-red);
+    text-shadow: 0 0 14px var(--gold-glow);
 }
 
 .section-header h2 {
@@ -474,11 +509,11 @@ body {
     font-size: 2.9rem;
     font-weight: 400;
     color: var(--ivory);
-    text-shadow: 0 0 20px rgba(216, 180, 103, 0.25);
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.65);
 }
 
 .section-header h2 em {
-    color: var(--gold);
+    color: var(--gold-bright);
     font-style: normal;
 }
 
@@ -495,10 +530,10 @@ body {
 }
 
 .work-item {
-    border: 1px solid rgba(216, 180, 103, 0.35);
-    background: linear-gradient(180deg, var(--bg-darker) 0%, #160103 100%);
+    border: 1px solid rgba(216, 180, 103, 0.45);
+    background: linear-gradient(180deg, rgba(10, 0, 2, 0.94) 0%, rgba(28, 2, 6, 0.96) 100%);
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.75);
     transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -506,8 +541,8 @@ body {
     border-color: var(--gold-bright);
     transform: translateY(-5px);
     box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.85), 
-        0 0 22px var(--gold-glow);
+        0 18px 40px rgba(0, 0, 0, 0.85), 
+        0 0 24px var(--gold-glow);
 }
 
 .work-image {
@@ -515,7 +550,7 @@ body {
     height: 360px;
     overflow: hidden;
     background-color: #060001;
-    border-bottom: 1px solid rgba(216, 180, 103, 0.25);
+    border-bottom: 1px solid rgba(216, 180, 103, 0.3);
 }
 
 .work-image img {
@@ -564,7 +599,7 @@ body {
     margin-top: 6rem;
     padding: 5rem 2rem;
     text-align: center;
-    background: radial-gradient(circle at center, rgba(110, 8, 20, 0.28) 0%, transparent 72%);
+    background: radial-gradient(circle at center, rgba(10, 0, 2, 0.42) 0%, transparent 75%);
 }
 
 .bio-section::before {
@@ -577,9 +612,9 @@ body {
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(216, 180, 103, 0.35) 22%,
+        rgba(216, 180, 103, 0.45) 22%,
         var(--gold-bright) 50%,
-        rgba(216, 180, 103, 0.35) 78%,
+        rgba(216, 180, 103, 0.45) 78%,
         transparent 100%
     );
     box-shadow: 0 0 14px var(--gold-glow);
@@ -591,7 +626,7 @@ body {
     top: -13px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--bg-crimson);
+    background-color: #54050f;
     padding: 0 0.8rem;
     color: var(--gold-bright);
     font-size: 1.1rem;
@@ -608,18 +643,19 @@ body {
     font-size: 2.7rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
-    text-shadow: 0 0 18px rgba(216, 180, 103, 0.25);
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.65);
 }
 
 .bio-container h2 em {
-    color: var(--gold);
+    color: var(--gold-bright);
     font-style: normal;
 }
 
 .bio-container p {
     font-size: 1.15rem;
-    color: var(--text-muted);
+    color: var(--ivory);
     margin-bottom: 2.2rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
 /* --- PIE DE PÁGINA --- */
@@ -629,7 +665,7 @@ body {
     color: var(--text-muted);
     font-size: 0.95rem;
     background-color: var(--bg-darker);
-    border-top: 1px solid rgba(216, 180, 103, 0.25);
+    border-top: 1px solid rgba(216, 180, 103, 0.35);
 }
 
 .footer-links {
