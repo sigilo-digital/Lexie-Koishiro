@@ -141,6 +141,7 @@ body {
 }
 
 .cave-flashlight {
+    display: none; /* Apagado temporalmente para visualizar la foto completa */
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -165,7 +166,7 @@ body {
 .hero-content {
     position: absolute;
     left: 8%;
-    top: 20%;
+    top: 12%; /* Ajustado para que todo el bloque de texto y botones respire bien */
     z-index: 3;
     max-width: 450px;
     pointer-events: none;
