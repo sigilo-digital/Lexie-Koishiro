@@ -117,8 +117,7 @@ body {
 .hero {
     position: relative;
     min-height: 85vh;
-    /* Asegúrate de que lex.png esté en la raíz junto al index.html */
-    background-image: url('../lex.png'); /* OJO: Si styles.css está en /css, ../ sube a la raíz */
+    background-image: url('../img/lex.png');
     background-size: cover;
     background-position: center 20%;
     background-color: var(--bg-darker);
@@ -127,7 +126,7 @@ body {
     padding: 4rem 10%;
     border-bottom: 1px solid rgba(212, 175, 106, 0.4);
     overflow: hidden;
-    cursor: crosshair; /* Cursor tipo mira/ritual */
+    cursor: crosshair;
 }
 
 /* Esta capa oscurece todo excepto el círculo del cursor y un tenue brillo en el rostro */
