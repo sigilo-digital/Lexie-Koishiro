@@ -5,7 +5,7 @@
     --gold: #d8b467;             /* Dorado ritual */
     --gold-bright: #ffe6a3;      /* Destello dorado intenso */
     --gold-glow: rgba(216, 180, 103, 0.45);
-    --cyber-red: #ff2442;        /* Rojo carmesí vibrante */
+    --cyber-red: #ff2442;        /* Rojo bermellón torii vibrante */
     --ivory: #f7f1e8;
     --text-muted: #c4abab;
     --font-title: 'Yuji Syuku', serif;
@@ -139,7 +139,7 @@ body {
     text-shadow: 0 0 10px var(--cyber-red);
 }
 
-/* --- HERO: NEGRO OBSIDIANA PURO PARA CONTRASTAR CON LA GALERÍA CARMESÍ --- */
+/* --- HERO: NEGRO OBSIDIANA PURO CON FUSIÓN INVISIBLE --- */
 .hero {
     position: relative;
     width: 100%;
@@ -151,6 +151,7 @@ body {
     align-items: center;
 }
 
+/* Filete dorado degradado en la base del Hero */
 .hero::after {
     content: "";
     position: absolute;
@@ -188,6 +189,7 @@ body {
     mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 86%, transparent 100%);
 }
 
+/* Linterna calibrada sobre tu rostro y haz interactivo */
 .cave-flashlight {
     display: block;
     position: absolute;
@@ -195,15 +197,15 @@ body {
     pointer-events: none;
     background: 
         radial-gradient(
-            circle 250px at var(--x, 34%) var(--y, 25%), 
+            circle 260px at var(--x, 34%) var(--y, 26%), 
             rgba(7, 0, 1, 0.0) 0%, 
-            rgba(7, 0, 1, 0.56) 55%, 
-            rgba(7, 0, 1, 0.92) 100%
+            rgba(7, 0, 1, 0.42) 55%, 
+            rgba(7, 0, 1, 0.85) 100%
         ),
         radial-gradient(
-            circle 150px at 34% 25%,
-            rgba(255, 235, 225, 0.16) 0%,
-            transparent 75%
+            circle 175px at 34% 26%,
+            rgba(255, 225, 220, 0.22) 0%,
+            transparent 78%
         );
     z-index: 2;
 }
@@ -396,52 +398,55 @@ body {
     }
 }
 
-/* --- BOTÓN CON ALTO CONTRASTE CARMESÍ Y DORADO --- */
+/* --- BOTÓN PORTAL TORII (ROJO BERMELLÓN VIBRANTE + DORADO) --- */
 .btn-gold {
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 0.85rem;
-    padding: 0.95rem 2.3rem;
-    border: 1px solid var(--gold);
-    background: linear-gradient(135deg, #6e0814 0%, #3d030a 100%);
-    color: var(--ivory);
+    gap: 0.9rem;
+    padding: 0.95rem 2.4rem;
+    border: 1px solid var(--gold-bright);
+    background: linear-gradient(135deg, #e01933 0%, #a80d22 100%);
+    color: #fffaf2;
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 3px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
     box-shadow: 
-        0 6px 24px rgba(0, 0, 0, 0.9),
-        0 0 18px rgba(185, 15, 35, 0.45),
-        inset 0 0 12px rgba(216, 180, 103, 0.25);
+        0 6px 25px rgba(0, 0, 0, 0.9),
+        0 0 24px rgba(255, 36, 66, 0.55),
+        inset 0 1px 0 rgba(255, 230, 163, 0.45);
     transition: all 0.35s ease;
 }
 
 .btn-gold::before,
 .btn-gold::after {
     content: "✦";
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     color: var(--gold-bright);
-    text-shadow: 0 0 8px var(--gold-bright);
+    text-shadow: 0 0 10px var(--gold-bright);
     transition: transform 0.35s ease, color 0.35s ease;
 }
 
 .btn-gold:hover {
-    border-color: var(--gold-bright);
-    background: linear-gradient(135deg, var(--gold) 0%, #b58d3d 100%);
-    color: var(--bg-darker);
+    border-color: #ffffff;
+    background: linear-gradient(135deg, #ff2442 0%, #c9122b 100%);
+    color: #ffffff;
     box-shadow: 
-        0 0 28px var(--gold-glow),
-        0 0 45px rgba(216, 180, 103, 0.35);
+        0 0 32px rgba(255, 36, 66, 0.85),
+        0 0 50px rgba(216, 180, 103, 0.4),
+        inset 0 0 12px rgba(255, 230, 163, 0.5);
     transform: translateY(-2px);
 }
 
-.btn-gold:hover::before,
-.btn-gold:hover::after {
-    color: var(--bg-darker);
-    text-shadow: none;
+.btn-gold:hover::before {
     transform: rotate(90deg);
+}
+
+.btn-gold:hover::after {
+    transform: rotate(-90deg);
 }
 
 /* --- SECCIONES Y GALERÍA --- */
@@ -553,7 +558,7 @@ body {
     font-size: 1rem;
 }
 
-/* --- SEMBLANZA --- */
+/* --- SEMBLANZA (CON FILETE DORADO DE LUJO) --- */
 .bio-section {
     position: relative;
     margin-top: 6rem;
