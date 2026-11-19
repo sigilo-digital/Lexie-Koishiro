@@ -112,7 +112,7 @@ body {
     color: var(--cyber-red);
 }
 
-/* --- HERO: IMAGEN COMPLETA SIN CORTES + LINTERNA --- */
+/* --- HERO: ESTAMPA UKIYO-E CYBER-PAGANA --- */
 .hero {
     position: relative;
     width: 100%;
@@ -121,43 +121,46 @@ body {
     overflow: hidden;
     cursor: crosshair;
     display: flex;
-    justify-content: flex-end; /* Empuja la imagen completa hacia la derecha */
+    justify-content: flex-end;
     align-items: center;
+    /* Marco interior estilo estampa japonesa */
+    box-shadow: inset 0 0 0 12px var(--bg-darker), inset 0 0 0 13px rgba(212, 175, 106, 0.25);
 }
 
 .hero-media {
     position: relative;
-    width: 65%;
-    max-width: 850px;
+    width: 68%;
+    max-width: 900px;
     line-height: 0;
 }
 
 .hero-img {
     width: 100%;
-    height: auto; /* Mantiene proporción real sin recortar piernas */
+    height: auto;
     display: block;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%, black 95%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 18%, black 95%, transparent 100%);
+    /* Integra el fondo rosa de la foto hacia tonos carmesí/tinta ukiyo-e */
+    filter: contrast(1.18) brightness(0.78) saturate(1.15) sepia(0.15) hue-rotate(-8deg);
+    /* Difumina los 4 bordes para que la foto emerja de la oscuridad sin cortes */
+    -webkit-mask-image: radial-gradient(ellipse 75% 85% at 55% 50%, black 45%, transparent 98%);
+    mask-image: radial-gradient(ellipse 75% 85% at 55% 50%, black 45%, transparent 98%);
 }
 
+/* Mantenemos la linterna lista pero muy sutil (puedes cambiar display: block cuando quieras) */
 .cave-flashlight {
-    display: none; /* Apagado temporalmente para visualizar la foto completa */
+    display: none; 
     position: absolute;
     inset: 0;
     pointer-events: none;
     background: 
-        /* 1. Haz de luz principal que sigue al cursor */
         radial-gradient(
-            circle 230px at var(--x, 45%) var(--y, 22%), 
+            circle 250px at var(--x, 45%) var(--y, 22%), 
             rgba(15, 1, 2, 0.0) 0%, 
-            rgba(15, 1, 2, 0.75) 55%, 
-            rgba(10, 0, 1, 0.96) 100%
+            rgba(15, 1, 2, 0.68) 55%, 
+            rgba(10, 0, 1, 0.92) 100%
         ),
-        /* 2. Halo fijo suave que deja ver tu rostro desde el inicio */
         radial-gradient(
-            circle 140px at 45% 22%,
-            rgba(255, 235, 230, 0.16) 0%,
-            rgba(15, 1, 2, 0.15) 50%,
+            circle 150px at 45% 22%,
+            rgba(255, 235, 230, 0.18) 0%,
             transparent 75%
         );
     z-index: 2;
@@ -165,34 +168,37 @@ body {
 
 .hero-content {
     position: absolute;
-    left: 8%;
-    top: 12%; /* Ajustado para que todo el bloque de texto y botones respire bien */
+    left: 7%;
+    top: 14%;
     z-index: 3;
-    max-width: 450px;
+    max-width: 480px;
     pointer-events: none;
 }
 
 .cyber-tag {
     display: inline-block;
-    font-size: 0.85rem;
-    letter-spacing: 3px;
+    font-size: 0.8rem;
+    letter-spacing: 3.5px;
     color: var(--cyber-red);
-    margin-bottom: 0.8rem;
+    background: rgba(15, 1, 2, 0.85);
+    border: 1px solid rgba(255, 42, 75, 0.4);
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 1rem;
     text-shadow: 0 0 10px rgba(255, 42, 75, 0.5);
 }
 
 .hero h1 {
     font-family: var(--font-title);
-    font-size: 4.5rem;
+    font-size: clamp(3.6rem, 5.5vw, 5.6rem);
     font-weight: 400;
-    line-height: 1.05;
+    line-height: 0.96;
     color: var(--ivory);
-    margin-bottom: 0.5rem;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+    margin-bottom: 0.8rem;
+    text-shadow: 0 6px 25px rgba(0, 0, 0, 0.95), 0 0 15px rgba(212, 175, 106, 0.2);
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     font-weight: 300;
     letter-spacing: 1px;
     color: var(--text-muted);
@@ -205,50 +211,38 @@ body {
 }
 
 .hero-manifesto {
-    margin-top: 1.2rem;
-    font-size: 1.05rem;
+    margin-top: 1.4rem;
+    font-size: 1rem;
     color: var(--text-muted);
     line-height: 1.7;
-    border-left: 1px solid var(--cyber-red);
-    padding-left: 1rem;
+    border-left: 2px solid var(--gold);
+    background: linear-gradient(90deg, rgba(36, 3, 6, 0.6) 0%, transparent 100%);
+    padding: 0.6rem 1rem;
 }
 
-.hero-actions {
-    margin-top: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    pointer-events: auto;
-}
-
-.cave-hint {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    animation: pulseGlow 3s infinite ease-in-out;
-}
-
+/* Cartela vertical estilo firma/sello Ukiyo-e */
 .kanji-seal {
     position: absolute;
-    right: 2rem;
-    top: 25%;
+    right: 2.5rem;
+    top: 16%;
     z-index: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     font-family: var(--font-title);
     color: var(--gold);
-    font-size: 1.2rem;
-    opacity: 0.5;
+    font-size: 1.15rem;
+    background-color: rgba(15, 1, 2, 0.85);
+    border: 1px solid var(--gold);
+    padding: 0.9rem 0.55rem;
+    box-shadow: 0 0 0 3px var(--bg-darker), 0 0 0 4px rgba(212, 175, 106, 0.35);
     pointer-events: none;
 }
 
 .kanji-line {
     width: 1px;
-    height: 45px;
+    height: 32px;
     background: linear-gradient(to bottom, var(--gold), var(--cyber-red));
 }
 
